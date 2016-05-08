@@ -6,22 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>some easy hackerrank problems | Chopper&#39;s New World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#problem 1
-Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.  
-Input FormatThe first line contains a single integer, NN. The next NN lines deno">
+  <meta name="description" content="problem 1Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.  
+Input FormatThe first line contains a single integer, NN. The next NN lines denote">
 <meta property="og:type" content="article">
 <meta property="og:title" content="some easy hackerrank problems">
 <meta property="og:url" content="http://ualyx.com/2016/05/08/hackerrank/index.html">
 <meta property="og:site_name" content="Chopper's New World">
-<meta property="og:description" content="#problem 1
-Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.  
-Input FormatThe first line contains a single integer, NN. The next NN lines deno">
-<meta property="og:updated_time" content="2016-05-08T09:55:42.780Z">
+<meta property="og:description" content="problem 1Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.  
+Input FormatThe first line contains a single integer, NN. The next NN lines denote">
+<meta property="og:updated_time" content="2016-05-08T09:58:01.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="some easy hackerrank problems">
-<meta name="twitter:description" content="#problem 1
-Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.  
-Input FormatThe first line contains a single integer, NN. The next NN lines deno">
+<meta name="twitter:description" content="problem 1Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.  
+Input FormatThe first line contains a single integer, NN. The next NN lines denote">
   
     <link rel="alternative" href="/atom.xml" title="Chopper&#39;s New World" type="application/atom+xml">
   
@@ -79,7 +76,7 @@ Input FormatThe first line contains a single integer, NN. The next NN lines deno
 						<li>Tags</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -235,8 +232,7 @@ Input FormatThe first line contains a single integer, NN. The next NN lines deno
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#problem 1</p>
-<p><strong>Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.</strong>  </p>
+        <h2 id="problem-1"><a href="#problem-1" class="headerlink" title="problem 1"></a>problem 1</h2><p><strong>Given a square matrix of size N×NN×N, calculate the absolute difference between the sums of its diagonals.</strong>  </p>
 <h2 id="Input-Format"><a href="#Input-Format" class="headerlink" title="Input Format"></a>Input Format</h2><p>The first line contains a single integer, NN. The next NN lines denote the matrix’s rows, with each line containing NN space-separated integers describing the columns.  </p>
 <h2 id="Output-Format"><a href="#Output-Format" class="headerlink" title="Output Format  "></a>Output Format  </h2><p>Print the absolute difference between the two sums of the matrix’s diagonals as a single integer. </p>
 <a id="more"></a>
@@ -252,7 +248,7 @@ Input FormatThe first line contains a single integer, NN. The next NN lines deno
       5
 10
 </code></pre><p>Sum across the secondary diagonal: 4 + 5 + 10 = 19<br>Difference: |4 - 19| = 15  </p>
-<p>##solution<br>C++:</p>
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>C++:</p>
 <pre><code>#include &lt;cmath&gt;
 #include &lt;cstdio&gt;
 #include &lt;vector&gt;
@@ -279,13 +275,13 @@ int main(){
     cout&lt;&lt;abs(priSum - secSum);
     return 0;
 }  
-</code></pre><p>#problem 2<br><strong>Given a time in AM/PM format, convert it to military (2424-hour) time.</strong></p>
+</code></pre><h2 id="problem-2"><a href="#problem-2" class="headerlink" title="problem 2"></a>problem 2</h2><p><strong>Given a time in AM/PM format, convert it to military (2424-hour) time.</strong></p>
 <p>Note: Midnight is 12:00:00AM12:00:00AM on a 1212-hour clock, and 00:00:0000:00:00 on a 2424-hour clock. Noon is 12:00:00PM12:00:00PM on a 1212-hour clock, and 12:00:0012:00:00 on a 2424-hour clock.</p>
 <h2 id="Input-Format-1"><a href="#Input-Format-1" class="headerlink" title="Input Format"></a>Input Format</h2><p>A single string containing a time in 1212-hour clock format (i.e.: hh:mm:ssAMhh:mm:ssAM or hh:mm:ssPMhh:mm:ssPM), where 01≤hh≤1201≤hh≤12.</p>
 <h2 id="Output-Format-1"><a href="#Output-Format-1" class="headerlink" title="Output Format"></a>Output Format</h2><p>Convert and print the given time in 2424-hour format, where 00≤hh≤2300≤hh≤23.</p>
 <h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>07:05:45PM</p>
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>19:05:45</p>
-<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h2><p>C++:  </p>
+<h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>C++:  </p>
 <pre><code>#include &lt;cmath&gt;
 #include &lt;cstdio&gt;
 #include &lt;vector&gt;
@@ -312,14 +308,14 @@ int main(){
     cout &lt;&lt; setw(2)&lt;&lt;setfill(&apos;0&apos;)&lt;&lt;hours &lt;&lt; time.substr(sz, 6);
     return 0;
 }
-</code></pre><p>#problem 3<br><strong>John 发现了很多种岩石。每种岩石都有一个独一无二成分:由小写英文字母组成。宝石是由一个单一的字符组成,并且将在所有岩石中出现。<br>给出一些岩石的成分,输出有多少种不同的宝石存在。</strong></p>
+</code></pre><h2 id="problem-3"><a href="#problem-3" class="headerlink" title="problem 3"></a>problem 3</h2><p><strong>John 发现了很多种岩石。每种岩石都有一个独一无二成分:由小写英文字母组成。宝石是由一个单一的字符组成,并且将在所有岩石中出现。<br>给出一些岩石的成分,输出有多少种不同的宝石存在。</strong></p>
 <h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式 "></a>输入格式 </h2><p>第一行包含一个整数 N, 代表岩石的个数,<br>接下来的N行,每行包含岩石的构成,由小写的英文字母组成。</p>
 <h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式 "></a>输出格式 </h2><p>输出有多少种不同的宝石</p>
 <h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围 "></a>数据范围 </h2><p>1 ≤ N ≤ 100<br>1 ≤ 代表岩石组成的英文单词长度 ≤ 100</p>
 <h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><p>3<br>abcdde<br>baccd<br>eeabg  </p>
 <h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出  "></a>样例输出  </h2><p>2</p>
 <h2 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释 "></a>样例解释 </h2><p>只有”a”, “b”两种不同的宝石,因为它们包含在每种岩石的成分中。   </p>
-<h2 id="solution-1"><a href="#solution-1" class="headerlink" title="solution"></a>solution</h2><p>C++:  </p>
+<h2 id="solution-2"><a href="#solution-2" class="headerlink" title="solution"></a>solution</h2><p>C++:  </p>
 <pre><code>#include &lt;cmath&gt;
 #include &lt;cstdio&gt;
 #include &lt;vector&gt;
