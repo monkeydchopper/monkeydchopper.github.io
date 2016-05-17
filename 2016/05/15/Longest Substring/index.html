@@ -16,7 +16,7 @@ Given “bbbbb”, the answer is “b">
 <meta property="og:description" content="QuestionGiven a string, find the length of the longest substring without repeating characters.  
 ExamplesGiven “abcabcbb”, the answer is “abc”, which the length is 3.  
 Given “bbbbb”, the answer is “b">
-<meta property="og:updated_time" content="2016-05-17T07:52:26.457Z">
+<meta property="og:updated_time" content="2016-05-17T09:04:18.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Longest Substring Without Repeating Characters">
 <meta name="twitter:description" content="QuestionGiven a string, find the length of the longest substring without repeating characters.  
@@ -240,60 +240,10 @@ Given “bbbbb”, the answer is “b">
 <p>Given “bbbbb”, the answer is “b”, with the length of 1.  </p>
 <p>Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.  </p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="First-solution"><a href="#First-solution" class="headerlink" title="First solution"></a>First solution</h3><p>create an ASCII table, the value of that array is the index of the string.</p>
-<pre><code>class Solution {
-public:
-    int k=0, a[128] = { 0 };
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0,i,j=0;
-        for (i = 0; i &lt; s.length(); i++) {
-            j = max(a[s[i]],j);            //此处j为最大的重复字符的索引
-            ans = max(ans,i-j+1);
-            a[s[i]] = i+1;
-        }
-        return ans;
-    }
-};  
-</code></pre><h3 id="Second-solution"><a href="#Second-solution" class="headerlink" title="Second solution"></a>Second solution</h3><p>using an unordered_set as a sliding window and let it iterate through the string.  </p>
-<pre><code>class Solution {
-public:
-    static int lengthOfLongestSubstring(string s) {
-        int ans = 0, i = 0, j = 0;
-        unordered_set&lt;char&gt; set;
-        for (j; j&lt;(int)s.length();) {
-            if (set.count(s[j])&lt;=0) {   //表中不包含字符
-                set.insert(s[j++]);        //sliding window 表尾后移
-                ans = max(ans, j - i);       
-            }
-            else {
-                set.erase(s[i++]);         //sliding window 表头后移
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="First-solution"><a href="#First-solution" class="headerlink" title="First solution"></a>First solution</h3><p>create an ASCII table, the value of that array is the index of the string.<br><figure class="highlight c"><figcaption><span>[++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">int</span> k=<span class="number">0</span>, a[<span class="number">128</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">int</span> ans = <span class="number">0</span>,i,j=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">			j = max(a[s[i]],j);            <span class="comment">//此处j为最大的重复字符的索引</span></span><br><span class="line">			ans = max(ans,i-j+<span class="number">1</span>);</span><br><span class="line">			a[s[i]] = i+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;  </span><br></pre></td></tr></table></figure></p>
+<h3 id="Second-solution"><a href="#Second-solution" class="headerlink" title="Second solution"></a>Second solution</h3><p>using an unordered_set as a sliding window and let it iterate through the string.<br><figure class="highlight c"><figcaption><span>[++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> ans = <span class="number">0</span>, i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">unordered_set</span>&lt;<span class="keyword">char</span>&gt; <span class="built_in">set</span>;</span><br><span class="line">		<span class="keyword">for</span> (j; j&lt;(int)s.length();) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">set</span>.count(s[j])&lt;=<span class="number">0</span>) &#123;   <span class="comment">//表中不包含字符</span></span><br><span class="line">				<span class="built_in">set</span>.insert(s[j++]);        <span class="comment">//sliding window 表尾后移</span></span><br><span class="line">				ans = max(ans, j - i);       </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="built_in">set</span>.erase(s[i++]);         <span class="comment">//sliding window 表头后移</span></span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;; </span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="Third-solution"><a href="#Third-solution" class="headerlink" title="Third solution"></a>Third solution</h3><p>using an unordered_map as a sliding window and let it iterate through the string.<br><figure class="highlight c"><figcaption><span>[++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">		<span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (; i &lt; (int)s.length(); i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">map</span>.find(s[i]) != <span class="built_in">map</span>.end())</span><br><span class="line">			&#123;</span><br><span class="line">				j = max(j, map[s[i]]);</span><br><span class="line">			&#125;</span><br><span class="line">			ans = max(i - j + <span class="number">1</span>, ans);</span><br><span class="line">			<span class="built_in">map</span>.erase(s[i]);</span><br><span class="line">			<span class="built_in">map</span>.insert(&#123; s[i],i+<span class="number">1</span> &#125;);</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		return ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 
-            }
-        }
-        return ans;
-    }
-}; 
-</code></pre><h3 id="Third-solution"><a href="#Third-solution" class="headerlink" title="Third solution"></a>Third solution</h3><p>using an unordered_map as a sliding window and let it iterate through the string.    </p>
-<pre><code>class Solution
-{
-public:
-    static int lengthOfLongestSubstring(string s) {
-        unordered_map&lt;char, int&gt; map;
-        int i = 0, j = 0, ans = 0;
-        for (; i &lt; (int)s.length(); i++) {
-            if (map.find(s[i]) != map.end())
-            {
-                j = max(j, map[s[i]]);
-            }
-            ans = max(i - j + 1, ans);
-            map.erase(s[i]);
-            map.insert({ s[i],i+1 });
-
-        }
-        return ans;
-    }
-};
-</code></pre>
       
     </div>
     
