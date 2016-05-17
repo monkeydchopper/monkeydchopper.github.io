@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives | Chopper&#39;s New World</title>
+  <title>Longest Substring Without Repeating Characters | Chopper&#39;s New World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Robot Toefl diary">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chopper's New World">
-<meta property="og:url" content="http://ualyx.com/archives/index.html">
+  <meta name="description" content="QuestionGiven a string, find the length of the longest substring without repeating characters.  
+ExamplesGiven “abcabcbb”, the answer is “abc”, which the length is 3.  
+Given “bbbbb”, the answer is “b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Substring Without Repeating Characters">
+<meta property="og:url" content="http://ualyx.com/2016/05/15/Longest Substring/index.html">
 <meta property="og:site_name" content="Chopper's New World">
-<meta property="og:description" content="Robot Toefl diary">
+<meta property="og:description" content="QuestionGiven a string, find the length of the longest substring without repeating characters.  
+ExamplesGiven “abcabcbb”, the answer is “abc”, which the length is 3.  
+Given “bbbbb”, the answer is “b">
+<meta property="og:updated_time" content="2016-05-17T07:52:26.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chopper's New World">
-<meta name="twitter:description" content="Robot Toefl diary">
+<meta name="twitter:title" content="Longest Substring Without Repeating Characters">
+<meta name="twitter:description" content="QuestionGiven a string, find the length of the longest substring without repeating characters.  
+ExamplesGiven “abcabcbb”, the answer is “abc”, which the length is 3.  
+Given “bbbbb”, the answer is “b">
   
     <link rel="alternative" href="/atom.xml" title="Chopper&#39;s New World" type="application/atom+xml">
   
@@ -191,181 +198,166 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Longest Substring" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/05/15/Longest Substring/" class="article-date">
+  	<time datetime="2016-05-15T14:50:20.388Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Longest Substring Without Repeating Characters
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/15/Longest Substring/" class="archive-article-date">
-  	<time datetime="2016-05-15T14:50:20.388Z" itemprop="datePublished">May 15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/15/Longest Substring/">Longest Substring Without Repeating Characters</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Given a string, find the length of the longest substring without repeating characters.  </p>
+<h2 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h2><p>Given “abcabcbb”, the answer is “abc”, which the length is 3.  </p>
+<p>Given “bbbbb”, the answer is “b”, with the length of 1.  </p>
+<p>Given “pwwkew”, the answer is “wke”, with the length of 3. Note that the answer must be a substring, “pwke” is a subsequence and not a substring.  </p>
+<a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="First-solution"><a href="#First-solution" class="headerlink" title="First solution"></a>First solution</h3><p>create an ASCII table, the value of that array is the index of the string.</p>
+<pre><code>class Solution {
+public:
+    int k=0, a[128] = { 0 };
+    int lengthOfLongestSubstring(string s) {
+        int ans = 0,i,j=0;
+        for (i = 0; i &lt; s.length(); i++) {
+            j = max(a[s[i]],j);            //此处j为最大的重复字符的索引
+            ans = max(ans,i-j+1);
+            a[s[i]] = i+1;
+        }
+        return ans;
+    }
+};  
+</code></pre><h3 id="Second-solution"><a href="#Second-solution" class="headerlink" title="Second solution"></a>Second solution</h3><p>using an unordered_set as a sliding window and let it iterate through the string.  </p>
+<pre><code>class Solution {
+public:
+    static int lengthOfLongestSubstring(string s) {
+        int ans = 0, i = 0, j = 0;
+        unordered_set&lt;char&gt; set;
+        for (j; j&lt;(int)s.length();) {
+            if (set.count(s[j])&lt;=0) {   //表中不包含字符
+                set.insert(s[j++]);        //sliding window 表尾后移
+                ans = max(ans, j - i);       
+            }
+            else {
+                set.erase(s[i++]);         //sliding window 表头后移
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</div>
+            }
+        }
+        return ans;
+    }
+}; 
+</code></pre><h3 id="Third-solution"><a href="#Third-solution" class="headerlink" title="Third solution"></a>Third solution</h3><p>using an unordered_map as a sliding window and let it iterate through the string.    </p>
+<pre><code>class Solution
+{
+public:
+    static int lengthOfLongestSubstring(string s) {
+        unordered_map&lt;char, int&gt; map;
+        int i = 0, j = 0, ans = 0;
+        for (; i &lt; (int)s.length(); i++) {
+            if (map.find(s[i]) != map.end())
+            {
+                j = max(j, map[s[i]]);
+            }
+            ans = max(i - j + 1, ans);
+            map.erase(s[i]);
+            map.insert({ s[i],i+1 });
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+        }
+        return ans;
+    }
+};
+</code></pre>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/12/two sum(extension)/" class="archive-article-date">
-  	<time datetime="2016-05-12T01:27:58.698Z" itemprop="datePublished">May 12</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/12/two sum(extension)/">the extension of two sum</a>
-    </h1>
   
+    <a href="/2016/05/12/two sum(extension)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">the extension of two sum</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/08/hackerrank/" class="archive-article-date">
-  	<time datetime="2016-05-08T08:25:40.960Z" itemprop="datePublished">May 8</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/08/hackerrank/">some easy hackerrank problems</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hackerrank/">hackerrank</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/08/two sum/" class="archive-article-date">
-  	<time datetime="2016-05-08T08:14:56.467Z" itemprop="datePublished">May 8</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/08/two sum/">two sum</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/coding/">coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Longest Substring" data-title="Longest Substring Without Repeating Characters" data-url="http://ualyx.com/2016/05/15/Longest Substring/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/05/06/僕が死のうと思ったのは/" class="archive-article-date">
-  	<time datetime="2016-05-05T23:17:13.108Z" itemprop="datePublished">May 6</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/05/06/僕が死のうと思ったのは/">僕が死のうと思ったのは</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/diary/">diary</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -391,8 +383,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
