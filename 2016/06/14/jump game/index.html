@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Search in Rotated Sorted Array | Chopper&#39;s New World</title>
+  <title>Jump Game | Chopper&#39;s New World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="QuestionSuppose a sorted array is rotated at some pivot unknown to you beforehand.
-(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
-You are given a target value to search. If found in the array retur">
+  <meta name="description" content="Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Determine if you">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Search in Rotated Sorted Array">
-<meta property="og:url" content="http://ualyx.com/2016/05/25/Search in Rotated Sorted Array/index.html">
+<meta property="og:title" content="Jump Game">
+<meta property="og:url" content="http://ualyx.com/2016/06/14/jump game/index.html">
 <meta property="og:site_name" content="Chopper's New World">
-<meta property="og:description" content="QuestionSuppose a sorted array is rotated at some pivot unknown to you beforehand.
-(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
-You are given a target value to search. If found in the array retur">
-<meta property="og:updated_time" content="2016-05-25T10:58:31.105Z">
+<meta property="og:description" content="Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Determine if you">
+<meta property="og:updated_time" content="2016-06-14T15:34:18.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Search in Rotated Sorted Array">
-<meta name="twitter:description" content="QuestionSuppose a sorted array is rotated at some pivot unknown to you beforehand.
-(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
-You are given a target value to search. If found in the array retur">
+<meta name="twitter:title" content="Jump Game">
+<meta name="twitter:description" content="Given an array of non-negative integers, you are initially positioned at the first index of the array.
+Each element in the array represents your maximum jump length at that position.
+Determine if you">
   
     <link rel="alternative" href="/atom.xml" title="Chopper&#39;s New World" type="application/atom+xml">
   
@@ -198,11 +198,11 @@ You are given a target value to search. If found in the array retur">
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Search in Rotated Sorted Array" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jump game" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/25/Search in Rotated Sorted Array/" class="article-date">
-  	<time datetime="2016-05-25T10:50:03.122Z" itemprop="datePublished">2016-05-25</time>
+      <a href="/2016/06/14/jump game/" class="article-date">
+  	<time datetime="2016-06-14T10:53:06.640Z" itemprop="datePublished">2016-06-14</time>
 </a>
     </div>
   
@@ -215,7 +215,7 @@ You are given a target value to search. If found in the array retur">
         
   
     <h1 class="article-title" itemprop="name">
-      Search in Rotated Sorted Array
+      Jump Game
     </h1>
   
 
@@ -235,13 +235,19 @@ You are given a target value to search. If found in the array retur">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>Suppose a sorted array is rotated at some pivot unknown to you beforehand.</p>
-<p>(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</p>
-<p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
-<p>You may assume no duplicate exists in the array.  </p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>the core idea is to find the target in already sorted part.</p>
+        <p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p>Each element in the array represents your maximum jump length at that position.</p>
+<p>Determine if you are able to reach the last index.</p>
+<p>For example:<br>A = [2,3,1,1,4], return true.</p>
+<p>A = [3,2,1,0,4], return false.  </p>
 <a id="more"></a>
-<figure class="highlight c"><figcaption><span>[++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">0</span>, last = nums.size();</span><br><span class="line">        <span class="keyword">int</span> middle  = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(first != last)&#123;</span><br><span class="line">            middle = (first+last)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(target == nums[middle])  return middle;</span><br><span class="line">            <span class="keyword">if</span>(nums[middle]&gt;=nums[first])&#123;</span><br><span class="line">                <span class="keyword">if</span>(target &gt;= nums[first] &amp;&amp; target &lt; nums[ middle]) last = middle;</span><br><span class="line">                <span class="keyword">else</span> first = middle+<span class="number">1</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">else</span>&#123;</span><br><span class="line">                 <span class="keyword">if</span>(target &gt;nums[middle] &amp;&amp; target &lt;= nums[last<span class="number">-1</span>]) </span><br><span class="line">                 first = middle+<span class="number">1</span>;</span><br><span class="line">                 <span class="keyword">else</span> last = middle;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="First-solution"><a href="#First-solution" class="headerlink" title="First solution"></a>First solution</h3><p>Iterate through the vector and find the maximum length it can jump.</p>
+<figure class="highlight c"><figcaption><span>[++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> reach = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; reach &amp;&amp; reach &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            reach = max(reach,i+<span class="number">1</span>+nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        return reach&gt;=nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Second-solution"><a href="#Second-solution" class="headerlink" title="Second solution"></a>Second solution</h3><ul>
+<li>dynamic programming.<br>Defining the state to be the maximun steps it can move backward at this position(i), and finding the state transfer function of this problem(move[i] = max(move[i-1],nums[i-1]) -1).  </li>
+</ul>
+<figure class="highlight c"><figcaption><span>[++]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; move(nums.size(),<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span> ;i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            move[i] = max(move[i<span class="number">-1</span>],nums[i<span class="number">-1</span>]) <span class="number">-1</span> ;</span><br><span class="line">            <span class="keyword">if</span>(move[i]&lt;<span class="number">0</span>) return <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        return move[nums.size()<span class="number">-1</span>] &gt;= <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -250,18 +256,9 @@ You are given a target value to search. If found in the array retur">
     
 <nav id="article-nav">
   
-    <a href="/2016/06/14/jump game/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Jump Game
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/05/25/Remove Duplicates from Sorted Array/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Remove Duplicates from Sorted Array</div>
+    <a href="/2016/05/25/Search in Rotated Sorted Array/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Search in Rotated Sorted Array</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -296,7 +293,7 @@ You are given a target value to search. If found in the array retur">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Search in Rotated Sorted Array" data-title="Search in Rotated Sorted Array" data-url="http://ualyx.com/2016/05/25/Search in Rotated Sorted Array/"></div>
+	<div class="ds-thread" data-thread-key="jump game" data-title="Jump Game" data-url="http://ualyx.com/2016/06/14/jump game/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
